@@ -1,6 +1,13 @@
 package pl.ymz.promac.testyprotokoly.model;
 
-public class User {
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Getter
+@Setter
+public class User extends BaseEntity{
 
     private String firstName;
     private String lastName;
@@ -8,7 +15,6 @@ public class User {
     private String pass;
     private Boolean Admin;
     private Boolean ReadOnly;
-
 
 
 }
