@@ -8,13 +8,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User extends BaseEntity{
+    //Użytkownik, tester
 
     private String firstName;
     private String lastName;
     private String login;
     private String pass;
     private Boolean Admin;
-    private Boolean ReadOnly;
-
-
+    private Boolean Tester;
+    private String signature;   //podpis w postaci obrazka/skanu
 }
