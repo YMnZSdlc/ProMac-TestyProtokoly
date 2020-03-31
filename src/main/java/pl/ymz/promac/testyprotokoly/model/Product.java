@@ -17,5 +17,4 @@ public class Product extends BaseEntity {
     private String productSymbol;   //oznaczenie rozdzielnicy jeśli istnieje
     private List<Element> elements; //lista elementów
     private Long userId;            //osoba testująca produkt
-
 }
