@@ -1,20 +1,25 @@
 package pl.ymz.promac.testyprotokoly.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import java.util.Date;
 import java.util.List;
 
-@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@Entity
 public class Product extends BaseEntity {
     //Przetestowany produkt, moduł
 
-    private String productSN;       //numer seryjny produktu ze zlecenia
-    private String productName;     //typ modułu np UPL710-2-63-ISO-12-B16
-    private String productSymbol;   //oznaczenie rozdzielnicy jeśli istnieje
-    private List<Element> elements; //lista elementów
-    private Long userId;            //osoba testująca produkt
+    private String productSN;           //numer seryjny produktu ze zlecenia
+    private String productType;         //typ modułu np UPL710-2-63-ISO-12-B16
+    private String productSymbol;       //oznaczenie rozdzielnicy jeśli istnieje
+    private List<Element> elements;     //lista elementów
+    private List<TestPosition> tests;   //lista testów
+    private Long userId;                //osoba testująca produkt
+    private Date testDate;              //data wykonania testu
 }
