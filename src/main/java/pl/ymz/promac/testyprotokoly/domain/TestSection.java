@@ -1,4 +1,4 @@
-package pl.ymz.promac.testyprotokoly.model;
+package pl.ymz.promac.testyprotokoly.domain;
 
 public enum TestSection {
 
