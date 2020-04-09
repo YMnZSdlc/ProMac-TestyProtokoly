@@ -5,20 +5,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class User {
+public class User extends BaseEntity {
     //Użytkownik, tester
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
     private String firstName;
     private String lastName;
     private String login;
@@ -26,4 +22,6 @@ public class User {
     private Boolean admin;
     private Boolean tester;
     private String signature;   //podpis w postaci obrazka/skanu
+    @OneToMany
+    private List<Product> product;
 }
