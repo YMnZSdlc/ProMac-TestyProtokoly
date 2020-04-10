@@ -26,5 +26,14 @@ public class BootStrap implements CommandLineRunner {
         grzegorz.setTester(true);
 
         userRepository.save(grzegorz);
+
+        userRepository.save(User.builder().firstName("YoMan")
+                .lastName("ZSiedlc")
+                .login("YMZ")
+                .pass("gg")
+                .admin(true)
+                .tester(true).build());
+
+        System.out.println("Użytkownicy załadowani");
     }
 }

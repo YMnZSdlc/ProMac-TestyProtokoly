@@ -18,4 +18,8 @@ public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    public BaseEntity(Integer id) {
+
+    }
 }

@@ -1,10 +1,12 @@
 package pl.ymz.promac.testyprotokoly.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.List;
 
@@ -23,5 +25,21 @@ public class User extends BaseEntity {
     private Boolean tester;
     private String signature;   //podpis w postaci obrazka/skanu
     @OneToMany
-    private List<Product> product;
+    @JoinColumn(name = "user_id")
+    private List<Product> products;
+
+    @Builder
+    public User(Integer id, String firstName, String lastName, String login, String pass,
+                Boolean admin, Boolean tester, String signature, List<Product> products) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.pass = pass;
+        this.admin = admin;
+        this.tester = tester;
+        this.signature = signature;
+        this.products = products;
+    }
+
 }
