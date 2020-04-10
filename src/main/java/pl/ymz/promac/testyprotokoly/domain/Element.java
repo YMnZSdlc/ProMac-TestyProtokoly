@@ -23,7 +23,8 @@ public class Element extends BaseEntity {
     private Product product;
 
     @Builder
-    public Element(Integer id, String elementType, String elementSymbol, String elementSN, Product product) {
+    public Element(Integer id, String elementType, String elementSymbol,
+                   String elementSN, Product product) {
         super(id);
         this.elementType = elementType;
         this.elementSymbol = elementSymbol;

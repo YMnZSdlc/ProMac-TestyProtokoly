@@ -27,7 +27,9 @@ public class TestPosition extends BaseEntity {
     private Product product;
 
     @Builder
-    public TestPosition(Integer id, Integer testNumber, TestSection testSection, String testDescription, Boolean testResult, String comments, Product product) {
+    public TestPosition(Integer id, Integer testNumber, TestSection testSection,
+                        String testDescription, Boolean testResult, String comments,
+                        Product product) {
         super(id);
         this.testNumber = testNumber;
         this.testSection = testSection;

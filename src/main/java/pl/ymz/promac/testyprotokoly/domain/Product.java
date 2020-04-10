@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,14 +28,15 @@ public class Product extends BaseEntity {
     private List<Element> elements;     //lista elementów
     @OneToMany
     @JoinColumn(name = "product_id")
-    private List<TestPosition> tests;   //lista testów
+    private List<TestPosition> tests;   //lista testów dla danego produktu
     @ManyToOne
     private User user;                  //osoba testująca produkt
-    private Date testDate;              //data wykonania testu
+    private LocalDate testDate;              //data wykonania testu
 
     @Builder
-    public Product(Integer id, String productSN, String productType, String productSymbol, List<Element> elements,
-                   List<TestPosition> tests, User user, Date testDate) {
+    public Product(Integer id, String productSN, String productType,
+                   String productSymbol, List<Element> elements, List<TestPosition> tests,
+                   User user, LocalDate testDate) {
         super(id);
         this.productSN = productSN;
         this.productType = productType;
@@ -44,6 +46,4 @@ public class Product extends BaseEntity {
         this.user = user;
         this.testDate = testDate;
     }
-
-
 }

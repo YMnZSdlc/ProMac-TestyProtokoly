@@ -27,5 +27,20 @@
     </tr>
 </table>
 
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Typ</th>
+        <th>Symbol</th>
+        <th>Nr seryjny</th>
+    </tr>
+    <tr th:each="element : ${elements}">
+        <td th:text="${element.id}">NrId</td>
+        <td th:text="${element.elementType}">Typ</td>
+        <td th:text="${element.elementSymbol}">Symbol</td>
+        <td th:text="${element.elementSN}">Nr seryjny</td>
+    </tr>
+</table>
+
 </body>
 </html>
