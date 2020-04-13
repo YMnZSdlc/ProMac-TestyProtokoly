@@ -30,17 +30,40 @@
 <table>
     <tr>
         <th>ID</th>
-        <th>Typ</th>
+        <th>Symbol produktu</th>
+        <th>Typ produktu</th>
+        <th>Nr seryjny</th>
+        <th>Testował</th>
+        <th>Data testu</th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">ID</td>
+        <td th:text="${product.productSymbol}">Symbol produktu</td>
+        <td th:text="${product.productType}">Typ produktu</td>
+        <td th:text="${product.productSN}">Nr seryjny</td>
+        <td th:text="${product.user.login}">Testował</td>
+        <td th:text="${product.testDate}">Data testu</td>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>ID</th>
         <th>Symbol</th>
+        <th>Typ</th>
+        <th>Zastosowano w</th>
         <th>Nr seryjny</th>
     </tr>
     <tr th:each="element : ${elements}">
         <td th:text="${element.id}">NrId</td>
-        <td th:text="${element.elementType}">Typ</td>
         <td th:text="${element.elementSymbol}">Symbol</td>
+        <td th:text="${element.elementType}">Typ</td>
+        <td th:text="${element.product.productType}">Typ</td>
         <td th:text="${element.elementSN}">Nr seryjny</td>
     </tr>
 </table>
+
+
 
 </body>
 </html>
