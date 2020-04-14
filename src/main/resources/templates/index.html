@@ -1,69 +1,111 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+
     <title>Strona startowa</title>
 </head>
+
 <body>
+<div class="container p-2 my-2 border">
 
-<h1>Lista użytkowników</h1>
+    <h1>Protokół sprawdzenia modułu</h1>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Login</th>
-        <th>Czy jest adminem?</th>
-        <th>Czy jest testerem?</th>
-    </tr>
-    <tr th:each="user : ${users}">
-        <td th:text="${user.id}">NrId</td>
-        <td th:text="${user.firstName}">Imię</td>
-        <td th:text="${user.lastName}">Nazwisko</td>
-        <td th:text="${user.login}">Login</td>
-        <td th:text="${user.admin}">Admin</td>
-        <td th:text="${user.tester}">Tester</td>
-    </tr>
-</table>
+    <table class="table-bordered table-responsive thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Login</th>
+            <th>Czy jest adminem?</th>
+            <th>Czy jest testerem?</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">NrId</td>
+            <td th:text="${user.firstName}">Imię</td>
+            <td th:text="${user.lastName}">Nazwisko</td>
+            <td th:text="${user.login}">Login</td>
+            <td th:text="${user.admin}">Admin</td>
+            <td th:text="${user.tester}">Tester</td>
+        </tr>
+    </table>
+    </br>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Symbol produktu</th>
-        <th>Typ produktu</th>
-        <th>Nr seryjny</th>
-        <th>Testował</th>
-        <th>Data testu</th>
-    </tr>
-    <tr th:each="product : ${products}">
-        <td th:text="${product.id}">ID</td>
-        <td th:text="${product.productSymbol}">Symbol produktu</td>
-        <td th:text="${product.productType}">Typ produktu</td>
-        <td th:text="${product.productSN}">Nr seryjny</td>
-        <td th:text="${product.user.login}">Testował</td>
-        <td th:text="${product.testDate}">Data testu</td>
-    </tr>
-</table>
+    <table class="table-bordered table-responsive thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Symbol produktu</th>
+            <th>Typ produktu</th>
+            <th>Nr seryjny</th>
+            <th>Testował</th>
+            <th>Data testu</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}">ID</td>
+            <td th:text="${product.productSymbol}">Symbol produktu</td>
+            <td th:text="${product.productType}">Typ produktu</td>
+            <td th:text="${product.productSN}">Nr seryjny</td>
+            <td th:text="${product.user.login}">Testował</td>
+            <td th:text="${product.testDate}">Data testu</td>
+        </tr>
+    </table>
+    </br>
 
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Symbol</th>
-        <th>Typ</th>
-        <th>Zastosowano w</th>
-        <th>Nr seryjny</th>
-    </tr>
-    <tr th:each="element : ${elements}">
-        <td th:text="${element.id}">NrId</td>
-        <td th:text="${element.elementSymbol}">Symbol</td>
-        <td th:text="${element.elementType}">Typ</td>
-        <td th:text="${element.product.productType}">Typ</td>
-        <td th:text="${element.elementSN}">Nr seryjny</td>
-    </tr>
-</table>
+    <table class="table-bordered table-responsive thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Symbol</th>
+            <th>Typ</th>
+            <th>Zastosowano w</th>
+            <th>Nr seryjny</th>
+        </tr>
+        <tr th:each="element : ${elements}">
+            <td th:text="${element.id}">NrId</td>
+            <td th:text="${element.elementSymbol}">Symbol</td>
+            <td th:text="${element.elementType}">Typ</td>
+            <td th:text="${element.product.productType}">Typ</td>
+            <td th:text="${element.elementSN}">Nr seryjny</td>
+        </tr>
+    </table>
+    </br>
 
+    <table class="table-bordered table-responsive thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Sekcja testu</th>
+            <th>Opis testu</th>
+            <th>Wynik testu</th>
+            <th>Uwagi</th>
+            <th>Produkt</th>
+        </tr>
+        <tr th:each="tet : ${tests}">
+            <td th:text="${tet.id}">NrId</td>
+            <td th:text="${tet.testSection.toString()}">Sekcja testu</td>
+            <td th:text="${tet.testDescription}">Opis testu</td>
+            <td th:text="${tet.testResult}">Wynik testu</td>
+            <td th:text="${tet.comments}">Uwagi</td>
+            <td th:text="${tet.product.productSymbol}">Produkt</td>
+        </tr>
+    </table>
 
+</div>
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script crossorigin="anonymous"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

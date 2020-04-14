@@ -17,4 +17,9 @@ public enum TestSection {
         this.sectionId = sectionId;
         this.definition = definition;
     }
+
+    @Override
+    public String toString() {
+        return definition;
+    }
 }
