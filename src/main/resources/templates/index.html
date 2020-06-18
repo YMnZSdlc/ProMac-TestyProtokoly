@@ -26,13 +26,14 @@
             <th>Czy jest adminem?</th>
             <th>Czy jest testerem?</th>
         </tr>
-        <tr th:each="user : ${users}">
-            <td th:text="${user.id}">NrId</td>
-            <td th:text="${user.firstName}">Imię</td>
-            <td th:text="${user.lastName}">Nazwisko</td>
-            <td th:text="${user.login}">Login</td>
-            <td th:text="${user.admin}">Admin</td>
-            <td th:text="${user.tester}">Tester</td>
+        <!--/*@thymesVar id="workers" type="pl.ymz.promac.testyprotokoly.domain.Product"*/-->
+        <tr th:each="worker : ${workers}">
+            <td th:text="${worker.id}">NrId</td>
+            <td th:text="${worker.firstName}">Imię</td>
+            <td th:text="${worker.lastName}">Nazwisko</td>
+            <td th:text="${worker.login}">Login</td>
+            <td th:text="${worker.admin}">Admin</td>
+            <td th:text="${worker.tester}">Tester</td>
         </tr>
     </table>
     </br>
@@ -46,12 +47,13 @@
             <th>Testował</th>
             <th>Data testu</th>
         </tr>
+        <!--/*@thymesVar id="products" type="pl.ymz.promac.testyprotokoly.domain.Product"*/-->
         <tr th:each="product : ${products}">
             <td th:text="${product.id}">ID</td>
             <td th:text="${product.productSymbol}">Symbol produktu</td>
             <td th:text="${product.productType}">Typ produktu</td>
             <td th:text="${product.productSN}">Nr seryjny</td>
-            <td th:text="${product.user.login}">Testował</td>
+            <td th:text="${product.worker.login}">Testował</td>
             <td th:text="${product.testDate}">Data testu</td>
         </tr>
     </table>
@@ -65,6 +67,7 @@
             <th>Zastosowano w</th>
             <th>Nr seryjny</th>
         </tr>
+        <!--/*@thymesVar id="elements" type="pl.ymz.promac.testyprotokoly.domain.Element"*/-->
         <tr th:each="element : ${elements}">
             <td th:text="${element.id}">NrId</td>
             <td th:text="${element.elementSymbol}">Symbol</td>
@@ -84,13 +87,14 @@
             <th>Uwagi</th>
             <th>Produkt</th>
         </tr>
-        <tr th:each="tet : ${tests}">
-            <td th:text="${tet.id}">NrId</td>
-            <td th:text="${tet.testSection.toString()}">Sekcja testu</td>
-            <td th:text="${tet.testDescription}">Opis testu</td>
-            <td th:text="${tet.testResult}">Wynik testu</td>
-            <td th:text="${tet.comments}">Uwagi</td>
-            <td th:text="${tet.product.productSymbol}">Produkt</td>
+        <!--/*@thymesVar id="tests" type="pl.ymz.promac.testyprotokoly.domain.TestPosition"*/-->
+        <tr th:each="test : ${tests}">
+            <td th:text="${test.id}">NrId</td>
+            <td th:text="${test.testSection.toString()}">Sekcja testu</td>
+            <td th:text="${test.testDescription}">Opis testu</td>
+            <td th:text="${test.testResult}">Wynik testu</td>
+            <td th:text="${test.comments}">Uwagi</td>
+            <td th:text="${test.product.productSymbol}">Produkt</td>
         </tr>
     </table>
 

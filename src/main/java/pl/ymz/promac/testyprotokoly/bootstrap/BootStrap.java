@@ -6,7 +6,7 @@ import pl.ymz.promac.testyprotokoly.domain.*;
 import pl.ymz.promac.testyprotokoly.repositories.ElementRepository;
 import pl.ymz.promac.testyprotokoly.repositories.ProductRepository;
 import pl.ymz.promac.testyprotokoly.repositories.TestPositionRepository;
-import pl.ymz.promac.testyprotokoly.repositories.UserRepository;
+import pl.ymz.promac.testyprotokoly.repositories.WorkerRepository;
 
 import java.time.LocalDate;
 
@@ -16,28 +16,28 @@ public class BootStrap implements CommandLineRunner {
     private final ElementRepository elementRepository;
     private final ProductRepository productRepository;
     private final TestPositionRepository testPositionRepository;
-    private final UserRepository userRepository;
+    private final WorkerRepository workerRepository;
 
     public BootStrap(ElementRepository elementRepository, ProductRepository productRepository,
-                     TestPositionRepository testPositionRepository, UserRepository userRepository) {
+                     TestPositionRepository testPositionRepository, WorkerRepository workerRepository) {
         this.elementRepository = elementRepository;
         this.productRepository = productRepository;
         this.testPositionRepository = testPositionRepository;
-        this.userRepository = userRepository;
+        this.workerRepository = workerRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Start ładowania danych z bootstrap do H2");
 
-        User user1 = new User().builder()
+        Worker worker1 = new Worker().builder()
                 .firstName("Grzegorz")
                 .lastName("Marciniak")
                 .login("MarcG")
                 .admin(false)
                 .tester(true)
                 .build();
-        User user2 = new User().builder()
+        Worker worker2 = new Worker().builder()
                 .firstName("YoMan")
                 .lastName("ZSiedlc")
                 .login("YMZ")
@@ -78,36 +78,39 @@ public class BootStrap implements CommandLineRunner {
                 .elementSN("1910515465")
                 .build();
 
+
+        int testNumber = 1;
+
         TestPosition test1 = new TestPosition().builder()
-                .testNumber(1)
+                .testNumber(testNumber++)
                 .testSection(TestSection.VISUAL_CHECK)
                 .testDescription("Kontrola wizualna")
                 .product(upl1)
                 .build();
 
         TestPosition test2 = new TestPosition().builder()
-                .testNumber(3)
+                .testNumber(testNumber++)
                 .testSection(TestSection.CONTINUITY_CHECK)
                 .testDescription("Kontrola ciągłości przewodów")
                 .product(upl1)
                 .build();
 
         TestPosition test3 = new TestPosition().builder()
-                .testNumber(5)
+                .testNumber(testNumber++)
                 .testSection(TestSection.INSULATION_RESISTANCE)
                 .testDescription("Pomiar rezystancji izolacji")
                 .product(upl1)
                 .build();
 
         TestPosition test4 = new TestPosition().builder()
-                .testNumber(7)
+                .testNumber(testNumber++)
                 .testSection(TestSection.SPECIFIC_TEST)
                 .testDescription("Testy układu właściwe dla typu urządzenia")
                 .product(upl1)
                 .build();
 
 //        user1.getProducts().add(upl1);
-        upl1.setUser(user1);
+        upl1.setWorker(worker1);
         atics1.setProduct(upl1);
         eds1.setProduct(upl1);
         eds2.setProduct(upl1);
@@ -119,8 +122,8 @@ public class BootStrap implements CommandLineRunner {
         test3.setProduct(upl1);
         test4.setProduct(upl1);
 
-        userRepository.save(user1);
-        userRepository.save(user2);
+        workerRepository.save(worker1);
+        workerRepository.save(worker2);
 
         productRepository.save(upl1);
 

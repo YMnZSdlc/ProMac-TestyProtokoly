@@ -7,11 +7,13 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Table(name = "elements")
 public class Element extends BaseEntity {
     //Spisywany element składowy produktu
 

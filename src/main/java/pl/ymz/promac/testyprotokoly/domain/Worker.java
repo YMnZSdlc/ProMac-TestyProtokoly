@@ -8,13 +8,15 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class User extends BaseEntity {
+@Table(name = "workers")
+public class Worker extends BaseEntity {
     //Użytkownik, tester
 
     private String firstName;
@@ -29,9 +31,9 @@ public class User extends BaseEntity {
     private List<Product> products; //list produktów wytestowanych przez użytkownika
 
     @Builder
-    public User(Integer id, String firstName, String lastName,
-                String login, String pass, Boolean admin,
-                Boolean tester, String signature, List<Product> products) {
+    public Worker(Integer id, String firstName, String lastName,
+                  String login, String pass, Boolean admin,
+                  Boolean tester, String signature, List<Product> products) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
