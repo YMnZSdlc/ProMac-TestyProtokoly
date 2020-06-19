@@ -3,8 +3,7 @@ package pl.ymz.promac.testyprotokoly.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,8 @@ import pl.ymz.promac.testyprotokoly.repositories.ProductRepository;
 import pl.ymz.promac.testyprotokoly.repositories.TestPositionRepository;
 import pl.ymz.promac.testyprotokoly.repositories.WorkerRepository;
 
-@RepositoryRestResource
+@Controller
+@RequestMapping("/all")
 class StartController {
 
     public static final Logger logger = LoggerFactory.getLogger(StartController.class);
@@ -31,7 +31,7 @@ class StartController {
         this.testPositionRepository = testPositionRepository;
     }
 
-    @RequestMapping("/start")
+    @GetMapping
     public String getUsers(Model model) {
         logger.info("Get all things from bootstrap");
         model.addAttribute("workers", workerRepository.findAll());
@@ -41,10 +41,10 @@ class StartController {
         return "index";
     }
 
-    @GetMapping(path = "/prod")
-    ResponseEntity<?> getAllProducts(){
-        logger.warn("Nie wiem ale ostrzegam");
-        return ResponseEntity.ok(productRepository.findAll());
-    }
+//    @GetMapping(path = "/prod")
+//    ResponseEntity<?> getAllProducts(){
+//        logger.warn("Nie wiem ale ostrzegam");
+//        return ResponseEntity.ok(productRepository.findAll());
+//    }
 
 }
