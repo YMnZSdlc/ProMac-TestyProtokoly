@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "tests")
+@Table(name = "test_positions")
 public class TestPosition extends BaseEntity {
     //Pozycja w testach
 

@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @NoArgsConstructor
@@ -23,12 +20,14 @@ public class Worker extends BaseEntity {
     private String lastName;
     private String login;
     private String pass;
-    private Boolean admin;      //czy użytkownik jest adminem
-    private Boolean tester;     //czy użytkownik jest testerem
-    private String signature;   //podpis w postaci obrazka/skanu
+    private Boolean admin;              //czy użytkownik jest adminem.
+    private Boolean tester;             //czy użytkownik jest testerem.
+    private String signature;           //podpis w postaci obrazka/skanu
     @OneToMany
     @JoinColumn(name = "worker_id")
-    private List<Product> products; //lista produktów wytestowanych przez użytkownika
+    private List<Product> products;     //lista produktów wytestowanych przez użytkownika
+    @Embedded
+    private Audit audit = new Audit();  //Springowy mechanizm trzymania daty utworzenia i edycji
 
     @Builder
     public Worker(Integer id, String firstName, String lastName,

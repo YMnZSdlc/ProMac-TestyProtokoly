@@ -18,9 +18,9 @@ import java.util.List;
 public class Product extends BaseEntity {
     //Przetestowany produkt, moduł
 
-    @NotBlank(message = "Numer seryjny jest wymagany")
+    @NotBlank(message = "Numer seryjny jest wymagany.")
     private String productSN;           //numer seryjny produktu ze zlecenia.
-    @NotBlank(message = "Typ modułu/produktu jest wymagany")
+    @NotBlank(message = "Typ modułu/produktu jest wymagany.")
     private String productType;         //typ modułu np. UPL710-2-63-ISO-12-B16.
     private String productSymbol;       //oznaczenie rozdzielnicy, jeśli istnieje.
     @OneToMany
@@ -38,9 +38,14 @@ public class Product extends BaseEntity {
     private Audit audit = new Audit();  //Springowy mechanizm trzymania daty utworzenia i edycji
 
     @Builder
-    public Product(Integer id, String productSN, String productType,
-                   String productSymbol, List<Element> elements, List<TestPosition> tests,
-                   Worker worker, LocalDate testDate) {
+    public Product(Integer id,
+                   String productSN,
+                   String productType,
+                   String productSymbol,
+                   List<Element> elements,
+                   List<TestPosition> tests,
+                   Worker worker,
+                   LocalDate testDate) {
         super(id);
         this.productSN = productSN;
         this.productType = productType;
