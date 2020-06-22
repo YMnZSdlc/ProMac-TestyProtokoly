@@ -27,8 +27,8 @@ public class Worker extends BaseEntity {
     private Boolean tester;     //czy użytkownik jest testerem
     private String signature;   //podpis w postaci obrazka/skanu
     @OneToMany
-    @JoinColumn(name = "user_id")
-    private List<Product> products; //list produktów wytestowanych przez użytkownika
+    @JoinColumn(name = "worker_id")
+    private List<Product> products; //lista produktów wytestowanych przez użytkownika
 
     @Builder
     public Worker(Integer id, String firstName, String lastName,

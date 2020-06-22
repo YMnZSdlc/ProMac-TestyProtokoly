@@ -84,28 +84,28 @@ public class BootStrap implements CommandLineRunner {
         TestPosition test1 = new TestPosition().builder()
                 .testNumber(testNumber++)
                 .testSection(TestSection.VISUAL_CHECK)
-                .testDescription("Kontrola wizualna")
+                .testDescription("Kontrola wizualna test")
                 .product(upl1)
                 .build();
 
         TestPosition test2 = new TestPosition().builder()
                 .testNumber(testNumber++)
                 .testSection(TestSection.CONTINUITY_CHECK)
-                .testDescription("Kontrola ciągłości przewodów")
+                .testDescription("Kontrola ciągłości przewodów test")
                 .product(upl1)
                 .build();
 
         TestPosition test3 = new TestPosition().builder()
                 .testNumber(testNumber++)
                 .testSection(TestSection.INSULATION_RESISTANCE)
-                .testDescription("Pomiar rezystancji izolacji")
+                .testDescription("Pomiar rezystancji izolacji test")
                 .product(upl1)
                 .build();
 
         TestPosition test4 = new TestPosition().builder()
                 .testNumber(testNumber++)
                 .testSection(TestSection.SPECIFIC_TEST)
-                .testDescription("Testy układu właściwe dla typu urządzenia")
+                .testDescription("Testy układu właściwe dla typu urządzenia test")
                 .product(upl1)
                 .build();
 
