@@ -28,7 +28,7 @@ public class BootStrap implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Start ładowania danych z bootstrap do H2");
+//        System.out.println("Start ładowania danych z bootstrap do H2");
 
         Worker worker1 = new Worker().builder()
                 .firstName("Grzegorz")
@@ -122,22 +122,22 @@ public class BootStrap implements CommandLineRunner {
         test3.setProduct(upl1);
         test4.setProduct(upl1);
 
-        workerRepository.save(worker1);
-        workerRepository.save(worker2);
+//        workerRepository.save(worker1);
+//        workerRepository.save(worker2);
+//
+//        productRepository.save(upl1);
+//
+//        elementRepository.save(atics1);
+//        elementRepository.save(eds1);
+//        elementRepository.save(eds2);
+//        elementRepository.save(rcms1);
+//        elementRepository.save(com1);
+//
+//        testPositionRepository.save(test1);
+//        testPositionRepository.save(test2);
+//        testPositionRepository.save(test3);
+//        testPositionRepository.save(test4);
 
-        productRepository.save(upl1);
-
-        elementRepository.save(atics1);
-        elementRepository.save(eds1);
-        elementRepository.save(eds2);
-        elementRepository.save(rcms1);
-        elementRepository.save(com1);
-
-        testPositionRepository.save(test1);
-        testPositionRepository.save(test2);
-        testPositionRepository.save(test3);
-        testPositionRepository.save(test4);
-
-        System.out.println("Dane załadowane z bootstrap");
+//        System.out.println("Dane załadowane z bootstrap");
     }
 }
