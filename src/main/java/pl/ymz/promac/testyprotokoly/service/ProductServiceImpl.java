@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import pl.ymz.promac.testyprotokoly.domain.Product;
 import pl.ymz.promac.testyprotokoly.repositories.ProductRepository;
 
@@ -11,7 +12,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService {
+@Service
+public class ProductServiceImpl {
 
     ProductRepository productRepository;
 
@@ -19,7 +21,6 @@ public class ProductServiceImpl implements ProductService {
         this.productRepository = productRepository;
     }
 
-    @Override
     public Page<Product> findAllProduct(Pageable pageable) {
         List<Product> products = new ArrayList<>();
         products = productRepository.findAll();

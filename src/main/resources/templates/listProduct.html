@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-    <!-- Static CSS -->
-    <link rel="stylesheet" type="text/css" href="css/awsm.css"/>
-    <!-- Bootstrap CSS -->
-    <!--    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
-    <!--          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">-->
+  <!-- Bootstrap CSS -->
+  <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
 
-    <title>Strona startowa</title>
+  <title>Strona startowa</title>
 </head>
 
 <body>
 <div>
 
-    <h1>Protokół sprawdzenia modułu</h1>
+  <h1>Protokół sprawdzenia modułu</h1>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Symbol produktu</th>
-            <th>Typ produktu</th>
-            <th>Nr seryjny</th>
-            <th>Testował</th>
-            <th>Data testu</th>
-        </tr>
-
-        <tr th:each="product, iStat : ${productPage.content}">
-            <td th:text="${product.id}">ID</td>
-            <td th:text="${product.productSymbol}">Symbol produktu</td>
-            <td th:text="${product.productType}">Typ produktu</td>
-            <td th:text="${product.productSN}">Nr seryjny</td>
-            <td th:text="${product.worker.login}">Testował</td>
-            <td th:text="${product.testDate}">Data testu</td>
-        </tr>
-    </table>
-    </br>
-
-
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Symbol produktu</th>
+      <th>Typ produktu</th>
+      <th>Nr seryjny</th>
+      <th>Testował</th>
+      <th>Data testu</th>
+      <th>Utworzone</th>
+    </tr>
+    <!--/*@thymesVar id="productPage" type="pl.ymz.promac.testyprotokoly.controllers.ProductController"*/-->
+    <tr th:each="product, iStat : ${productPage.content}"
+        th:style="${iStat.odd}? 'font-weight: bold;'"
+        th:alt-title="${iStat.even}? 'even' : 'odd'">
+      <td th:text="${product.id}">ID</td>
+      <td th:text="${product.productSymbol}">Symbol produktu</td>
+      <td th:text="${product.productType}">Typ produktu</td>
+      <td th:text="${product.productSN}">Nr seryjny</td>
+      <td th:text="${product.worker.login}">Testował</td>
+      <td th:text="${product.testDate}">Data testu</td>
+      <td th:text="${product.audit.created}"></td>
+    </tr>
+  </table>
+  </br>
 </div>
 
+<!--/*@thymesVar id="productPage" type="pl.ymz.promac.testyprotokoly.controllers.ProductController"*/-->
+<div th:if="${productPage.totalPages > 0}" class="pagination"
+     th:each="pageNumber : ${pageNumbers}">
+  <a th:href="@{/prod/list(size=${productPage.size}, page=${pageNumber})}"
+     th:text=${pageNumber}
+     th:class="${pageNumber==productPage.number + 1} ? active"></a>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>

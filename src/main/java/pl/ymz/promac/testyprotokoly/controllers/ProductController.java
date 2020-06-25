@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.ymz.promac.testyprotokoly.domain.Product;
-import pl.ymz.promac.testyprotokoly.service.ProductService;
+import pl.ymz.promac.testyprotokoly.service.ProductServiceImpl;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +20,11 @@ import java.util.stream.IntStream;
 public class ProductController {
 
 
-    private ProductService productService;
+    private ProductServiceImpl productService;
 
+    public ProductController(ProductServiceImpl productService) {
+        this.productService = productService;
+    }
 
     @GetMapping(value = "/list")
     public String getProductPageList(Model model,

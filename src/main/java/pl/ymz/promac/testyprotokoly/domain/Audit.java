@@ -16,8 +16,16 @@ public class Audit {
         created = LocalDateTime.now();
     }
 
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
     @PreUpdate
     void preUpdate() {
-        created = LocalDateTime.now();
+        updated = LocalDateTime.now();
     }
 }
