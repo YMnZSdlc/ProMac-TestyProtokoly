@@ -7,14 +7,16 @@
 
   <!-- Static CSS -->
   <link rel="stylesheet" type="text/css" href="css/awsm.css"/>
-  <!-- Bootstrap CSS -->
-  <!--    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
-  <!--          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">-->
 
   <title>Urządzenia pomiarowe</title>
 </head>
 
 <body>
+
+<!--Fragmenty thymeleaf-->
+<div th:insert="fragments/fragment :: menu"></div>
+<div th:insert="fragments/fragment :: header"></div>
+
 <div class="container p-2 my-2 border">
 
   <h1>Urządzenia pomiarowe</h1>
@@ -42,25 +44,28 @@
   <h2>Dodaj nowe urządzenie pomairowe</h2>
   <!--/*@thymesVar id="device" type="pl.ymz.promac.testyprotokoly.controllers.MeasuringDeviceController"*/-->
   <form th:action="@{/md}" method="post" th:object="${device}"/>
-    <label>Nazwa:</label>
-    <label>
-      <input type="text" th:field="*{device.nameMD}"/>
-    </label>
-    <label>Producent:</label>
-    <label>
-      <input type="text" th:field="*{device.producerMD}"/>
-    </label>
-    <label>Typ:</label>
-    <label>
-      <input type="text" th:field="*{device.typeMD}"/>
-    </label>
-    <label>Nr seryjny:</label>
-    <label>
-      <input type="text" th:field="*{device.serialMD}"/>
-    </label>
+  <label>Nazwa:</label>
+  <label>
+    <input type="text" th:field="*{device.nameMD}"/>
+  </label>
+  <label>Producent:</label>
+  <label>
+    <input type="text" th:field="*{device.producerMD}"/>
+  </label>
+  <label>Typ:</label>
+  <label>
+    <input type="text" th:field="*{device.typeMD}"/>
+  </label>
+  <label>Nr seryjny:</label>
+  <label>
+    <input type="text" th:field="*{device.serialMD}"/>
+  </label>
   <button type="submit">Zapisz</button>
   </form>
 </div>
+
+<!--Fragment footer / stopka-->
+<div th:insert="fragments/fragment :: footer"></div>
 
 </body>
 </html>

@@ -46,7 +46,7 @@ public class ProductController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "listProduct.html";
+        return "products/page.html";
     }
 
 

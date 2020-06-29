@@ -27,7 +27,7 @@ public class MeasuringDeviceController {
         logger.info("Pobranie listy urządzeń pomiarowych");
         model.addAttribute("devices", repository.findAll());
         model.addAttribute("device", new MeasuringDevice());
-        return "device";
+        return "devices/main";
     }
 
     @PostMapping
@@ -36,7 +36,7 @@ public class MeasuringDeviceController {
         logger.warn("Próba dodania urządzenia pomiarowego");
         repository.save(device);
         model.addAttribute("devices", repository.findAll());
-        return "device";
+        return "devices/main";
     }
 
 
