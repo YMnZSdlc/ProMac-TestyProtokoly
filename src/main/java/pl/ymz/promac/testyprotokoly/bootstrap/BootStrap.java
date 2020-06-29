@@ -3,12 +3,10 @@ package pl.ymz.promac.testyprotokoly.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.ymz.promac.testyprotokoly.domain.*;
-import pl.ymz.promac.testyprotokoly.repositories.ElementRepository;
-import pl.ymz.promac.testyprotokoly.repositories.ProductRepository;
-import pl.ymz.promac.testyprotokoly.repositories.TestPositionRepository;
-import pl.ymz.promac.testyprotokoly.repositories.WorkerRepository;
+import pl.ymz.promac.testyprotokoly.repositories.*;
 
 import java.time.LocalDate;
+import java.util.Random;
 
 @Component
 public class BootStrap implements CommandLineRunner {
@@ -17,13 +15,15 @@ public class BootStrap implements CommandLineRunner {
     private final ProductRepository productRepository;
     private final TestPositionRepository testPositionRepository;
     private final WorkerRepository workerRepository;
+    private final MeasuringDeviceRepository measuringDeviceRepository;
 
     public BootStrap(ElementRepository elementRepository, ProductRepository productRepository,
-                     TestPositionRepository testPositionRepository, WorkerRepository workerRepository) {
+                     TestPositionRepository testPositionRepository, WorkerRepository workerRepository, MeasuringDeviceRepository measuringDeviceRepository) {
         this.elementRepository = elementRepository;
         this.productRepository = productRepository;
         this.testPositionRepository = testPositionRepository;
         this.workerRepository = workerRepository;
+        this.measuringDeviceRepository = measuringDeviceRepository;
     }
 
     @Override
@@ -138,6 +138,23 @@ public class BootStrap implements CommandLineRunner {
 //        testPositionRepository.save(test3);
 //        testPositionRepository.save(test4);
 
-//        System.out.println("Dane załadowane z bootstrap");
+//        addMeasuringDevice();
+
+        System.out.println("Dane załadowane z bootstrap");
     }
+
+    private void addMeasuringDevice (){
+        Random r = new Random();
+        var device = new MeasuringDevice().builder()
+                .nameMD("Miernik uniwersalny")
+                .producerMD("Sonel")
+                .typeMD("MPI-"+ r.nextInt(999))
+                .serialMD(""+ r.nextInt(200000))
+                .build();
+        measuringDeviceRepository.save(device);
+    }
+
+
 }
+
+

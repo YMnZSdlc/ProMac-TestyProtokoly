@@ -20,15 +20,18 @@ public class ElementPattern extends BaseEntity {
 
     @NotBlank(message = "Typ elementu jest wymagany.")
     private String elementType;             //typ elementu np EDS150
+    private String elementSymbol;           //symbol w module np. N2, Q1, D1
     @ManyToOne
     private ProductPattern productPattern;  //Produkt ma wiele elementów składowych
 
     @Builder
     public ElementPattern(Integer id,
                           String elementType,
+                          String elementSymbol,
                           ProductPattern productPattern) {
         super(id);
         this.elementType = elementType;
+        this.elementSymbol = elementSymbol;
         this.productPattern = productPattern;
     }
 }

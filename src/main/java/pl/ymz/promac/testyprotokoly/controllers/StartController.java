@@ -22,7 +22,6 @@ class StartController {
     private final ElementRepository elementRepository;
     private final TestPositionRepository testPositionRepository;
 
-
     public StartController(WorkerRepository workerRepository, ProductRepository productRepository,
                            ElementRepository elementRepository, TestPositionRepository testPositionRepository) {
         this.workerRepository = workerRepository;

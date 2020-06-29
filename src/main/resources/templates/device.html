@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <!-- Static CSS -->
+  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>
+  <!-- Bootstrap CSS -->
+  <!--    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"-->
+  <!--          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">-->
+
+  <title>Urządzenia pomiarowe</title>
+</head>
+
+<body>
+<div class="container p-2 my-2 border">
+
+  <h1>Urządzenia pomiarowe</h1>
+
+  <table class="table-bordered table-responsive thead-light">
+    <tr>
+      <th>ID</th>
+      <th>Nazwa</th>
+      <th>Producent</th>
+      <th>Typ</th>
+      <th>Numer seryjny</th>
+    </tr>
+
+    <tr th:each="dev : ${devices}">
+      <td th:text="${dev.id}">ID</td>
+      <td th:text="${dev.nameMD}">Imię</td>
+      <td th:text="${dev.producerMD}">Nazwisko</td>
+      <td th:text="${dev.typeMD}">Login</td>
+      <td th:text="${dev.serialMD}">Admin</td>
+    </tr>
+  </table>
+  </br>
+</div>
+<div>
+  <h2>Dodaj nowe urządzenie pomairowe</h2>
+  <!--/*@thymesVar id="device" type="pl.ymz.promac.testyprotokoly.controllers.MeasuringDeviceController"*/-->
+  <form th:action="@{/md}" method="post" th:object="${device}"/>
+    <label>Nazwa:</label>
+    <label>
+      <input type="text" th:field="*{device.nameMD}"/>
+    </label>
+    <label>Producent:</label>
+    <label>
+      <input type="text" th:field="*{device.producerMD}"/>
+    </label>
+    <label>Typ:</label>
+    <label>
+      <input type="text" th:field="*{device.typeMD}"/>
+    </label>
+    <label>Nr seryjny:</label>
+    <label>
+      <input type="text" th:field="*{device.serialMD}"/>
+    </label>
+  <button type="submit">Zapisz</button>
+  </form>
+</div>
+
+</body>
+</html>
