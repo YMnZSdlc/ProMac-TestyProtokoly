@@ -18,7 +18,7 @@ public class ProductPattern extends BaseEntity {
     //Pusty szablon produktu danego typu do przetworzenia w produkt
 
     @NotBlank(message = "Typ modułu/produktu jest wymagany.")
-    private String productType;                     //typ modułu np. UPL710-2-63-ISO-12-B16.
+    private String type;                     //typ modułu np. UPL710-2-63-ISO-12-B16.
     @OneToMany
     @JoinColumn(name = "product_pattern_id")
     private List<ElementPattern> elementPatterns;   //lista elementów
@@ -30,11 +30,11 @@ public class ProductPattern extends BaseEntity {
 
     @Builder
     public ProductPattern(Integer id,
-                          String productType,
+                          String type,
                           List<ElementPattern> elementPatterns,
                           List<TestPattern> testPatterns) {
         super(id);
-        this.productType = productType;
+        this.type = type;
         this.elementPatterns = elementPatterns;
         this.testPatterns = testPatterns;
     }

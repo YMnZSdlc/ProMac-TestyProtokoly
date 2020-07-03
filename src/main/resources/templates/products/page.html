@@ -31,12 +31,13 @@
       <th>Data testu</th>
       <th>Utworzone</th>
     </tr>
-    <!--/*@thymesVar id="productPage" type="pl.ymz.promac.testyprotokoly.controllers.ProductController"*/-->
+
+    <!--/*@thymesVar id="content" type="pl.ymz.promac.testyprotokoly.controllers.ProductController"*/-->
     <tr th:each="product, iStat : ${productPage.content}"
         th:style="${iStat.odd}? 'font-weight: bold;'"
         th:alt-title="${iStat.even}? 'even' : 'odd'">
       <td th:text="${product.id}">ID</td>
-      <td th:text="${product.productSymbol}">Symbol produktu</td>
+      <td th:text="${product.symbol}">Symbol produktu</td>
       <td th:text="${product.productType}">Typ produktu</td>
       <td th:text="${product.productSN}">Nr seryjny</td>
       <td th:text="${product.worker.login}">Testował</td>

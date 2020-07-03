@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -20,10 +19,10 @@ public class Product extends BaseEntity {
     //Przetestowany produkt, moduł
 
     @NotBlank(message = "Numer seryjny jest wymagany.")
-    private String productSN;           //numer seryjny produktu ze zlecenia.
+    private String serialNo;           //numer seryjny produktu ze zlecenia.
     @NotBlank(message = "Typ modułu/produktu jest wymagany.")
-    private String productType;         //typ modułu np. UPL710-2-63-ISO-12-B16.
-    private String productSymbol;       //oznaczenie rozdzielnicy, jeśli istnieje.
+    private String type;         //typ modułu np. UPL710-2-63-ISO-12-B16.
+    private String symbol;       //oznaczenie rozdzielnicy, jeśli istnieje.
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<Element> elements;     //lista elementów
@@ -31,7 +30,7 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "product_id")
     private List<TestPosition> tests;   //lista testów dla danego produktu
     @ManyToOne
-    private MeasuringDevice mDevice;
+    private Instrument instrument;
     @ManyToOne
     private Worker worker;              //osoba testująca produkt
     private LocalDate testDate;         //data wykonania testu
@@ -40,17 +39,17 @@ public class Product extends BaseEntity {
 
     @Builder
     public Product(Integer id,
-                   String productSN,
-                   String productType,
-                   String productSymbol,
+                   String serialNo,
+                   String type,
+                   String symbol,
                    List<Element> elements,
                    List<TestPosition> tests,
                    Worker worker,
                    LocalDate testDate) {
         super(id);
-        this.productSN = productSN;
-        this.productType = productType;
-        this.productSymbol = productSymbol;
+        this.serialNo = serialNo;
+        this.type = type;
+        this.symbol = symbol;
         this.elements = elements;
         this.tests = tests;
         this.worker = worker;

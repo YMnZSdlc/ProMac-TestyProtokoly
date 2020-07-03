@@ -2,8 +2,8 @@ package pl.ymz.promac.testyprotokoly.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.ymz.promac.testyprotokoly.domain.MeasuringDevice;
+import pl.ymz.promac.testyprotokoly.domain.Instrument;
 
 @Repository
-public interface MeasuringDeviceRepository extends JpaRepository<MeasuringDevice, Integer> {
+public interface InstrumentRepository extends JpaRepository<Instrument, Integer> {
 }

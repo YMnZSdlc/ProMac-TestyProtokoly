@@ -30,35 +30,35 @@
       <th>Numer seryjny</th>
     </tr>
 
-    <tr th:each="dev : ${devices}">
-      <td th:text="${dev.id}">ID</td>
-      <td th:text="${dev.nameMD}">Imię</td>
-      <td th:text="${dev.producerMD}">Nazwisko</td>
-      <td th:text="${dev.typeMD}">Login</td>
-      <td th:text="${dev.serialMD}">Admin</td>
+    <tr th:each="instrument : ${instruments}">
+      <td th:text="${instrument.id}">ID</td>
+      <td th:text="${instrument.name}">Imię</td>
+      <td th:text="${instrument.producer}">Nazwisko</td>
+      <td th:text="${instrument.type}">Login</td>
+      <td th:text="${instrument.serialNo}">Admin</td>
     </tr>
   </table>
   </br>
 </div>
 <div>
   <h2>Dodaj nowe urządzenie pomairowe</h2>
-  <!--/*@thymesVar id="device" type="pl.ymz.promac.testyprotokoly.controllers.MeasuringDeviceController"*/-->
-  <form th:action="@{/md}" method="post" th:object="${device}"/>
+    <!--/*@thymesVar id="device" type="pl.ymz.promac.testyprotokoly.controllers.InstrumentController"*/-->
+  <form th:action="@{/instrument}" method="post" th:object="${instrument}"/>
   <label>Nazwa:</label>
   <label>
-    <input type="text" th:field="*{device.nameMD}"/>
+    <input type="text" th:field="*{instrument.name}"/>
   </label>
   <label>Producent:</label>
   <label>
-    <input type="text" th:field="*{device.producerMD}"/>
+    <input type="text" th:field="*{instrument.producer}"/>
   </label>
   <label>Typ:</label>
   <label>
-    <input type="text" th:field="*{device.typeMD}"/>
+    <input type="text" th:field="*{instrument.type}"/>
   </label>
   <label>Nr seryjny:</label>
   <label>
-    <input type="text" th:field="*{device.serialMD}"/>
+    <input type="text" th:field="*{instrument.serialNo}"/>
   </label>
   <button type="submit">Zapisz</button>
   </form>

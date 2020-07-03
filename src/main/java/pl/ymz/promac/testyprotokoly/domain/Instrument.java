@@ -16,32 +16,32 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "measuring_devices")
-public class MeasuringDevice extends BaseEntity {
+@Table(name = "instruments")
+public class Instrument extends BaseEntity {
     //Urządzenie pomiarowe
 
     @NotBlank(message = "Nazwa przyrządu jet wymagana")
-    private String nameMD;          //Nazwa przyrządu pomiarowego.
+    private String name;          //Nazwa przyrządu pomiarowego.
     @NotBlank(message = "Nazwa producenta przyrządu jest wymagana")
-    private String producerMD;      //Producent przyrządu pomiarowego.
+    private String producer;      //Producent przyrządu pomiarowego.
     @NotBlank(message = "Typ przyrządu jest wymagany")
-    private String typeMD;          //Typ przyrządu pomiarowego.
+    private String type;          //Typ przyrządu pomiarowego.
     @NotBlank(message = "Numer seryjny przyrządu jest wymagany")
-    private String serialMD;        //Numer fabryczny/seryjny przyrządu pomiarowego.
+    private String serialNo;        //Numer fabryczny/seryjny przyrządu pomiarowego.
     @OneToMany
-    @JoinColumn(name = "measuring_device_id")
+    @JoinColumn(name = "instruments_id")
     private List<Product> products; //lista produktów testowana przez urządzenie
 
     @Builder
-    public MeasuringDevice(Integer id,
-                           String nameMD,
-                           String producerMD,
-                           String typeMD,
-                           String serialMD) {
+    public Instrument(Integer id,
+                      String name,
+                      String producer,
+                      String type,
+                      String serialNo) {
         super(id);
-        this.nameMD = nameMD;
-        this.producerMD = producerMD;
-        this.typeMD = typeMD;
-        this.serialMD = serialMD;
+        this.name = name;
+        this.producer = producer;
+        this.type = type;
+        this.serialNo = serialNo;
     }
 }

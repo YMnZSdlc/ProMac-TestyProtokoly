@@ -15,24 +15,24 @@ import javax.persistence.*;
 public class TestPosition extends BaseEntity {
     //Pozycja w testach
 
-    private Integer testNumber;     //liczba porządkowa testu
+    private Integer orderNo;     //liczba porządkowa testu
     @Enumerated(EnumType.ORDINAL)
-    private TestSection testSection;//sekcja testu
-    private String testDescription; //opis testu
-    private Boolean testResult;     //wynik testu
+    private TestSection section;//sekcja testu
+    private String description; //opis testu
+    private Boolean result;     //wynik testu
     private String comments;        //uwagi do testu
     @ManyToOne
     private Product product;
 
     @Builder
-    public TestPosition(Integer id, Integer testNumber, TestSection testSection,
-                        String testDescription, Boolean testResult, String comments,
+    public TestPosition(Integer id, Integer orderNo, TestSection section,
+                        String description, Boolean result, String comments,
                         Product product) {
         super(id);
-        this.testNumber = testNumber;
-        this.testSection = testSection;
-        this.testDescription = testDescription;
-        this.testResult = testResult;
+        this.orderNo = orderNo;
+        this.section = section;
+        this.description = description;
+        this.result = result;
         this.comments = comments;
         this.product = product;
     }

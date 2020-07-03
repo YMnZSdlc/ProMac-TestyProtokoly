@@ -15,10 +15,10 @@ import javax.persistence.*;
 public class TestPattern extends BaseEntity {
     //Szablon pozycji w testach
 
-    private Integer testNumber;         //liczba porządkowa testu
+    private Integer orderNo;         //liczba porządkowa testu
     @Enumerated(EnumType.ORDINAL)
-    private TestSection testSection;    //sekcja testu
-    private String testDescription;     //opis testu
+    private TestSection section;    //sekcja testu
+    private String description;     //opis testu
     @ManyToOne
     private ProductPattern productPattern;
     @Embedded
@@ -26,14 +26,14 @@ public class TestPattern extends BaseEntity {
 
     @Builder
     public TestPattern(Integer id,
-                       Integer testNumber,
-                       TestSection testSection,
-                       String testDescription,
+                       Integer orderNo,
+                       TestSection section,
+                       String description,
                        ProductPattern productPattern) {
         super(id);
-        this.testNumber = testNumber;
-        this.testSection = testSection;
-        this.testDescription = testDescription;
+        this.orderNo = orderNo;
+        this.section = section;
+        this.description = description;
         this.productPattern = productPattern;
     }
 }
