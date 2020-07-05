@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+  <!-- Static CSS -->
+  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>
+
+  <title>Urządzenia pomiarowe</title>
+</head>
+
+<body>
+
+<!--Fragmenty thymeleaf-->
+<div th:insert="fragments/fragment :: menu"></div>
+<div th:insert="fragments/fragment :: header"></div>
+
+<div class="container p-2 my-2 border">
+
+  <h1>Nowe urządzenie pomiarowe</h1>
+
+<div>
+  <h2>Dodaj nowe urządzenie pomairowe</h2>
+  <!--/*@thymesVar id="device" type="pl.ymz.promac.testyprotokoly.controllers.InstrumentController"*/-->
+  <form th:action="@{/instrument}" method="post" th:object="${instrument}"/>
+  <label>Nazwa:</label>
+  <label>
+    <input type="text" th:field="*{instrument.name}"/>
+  </label>
+  <label>Producent:</label>
+  <label>
+    <input type="text" th:field="*{instrument.producer}"/>
+  </label>
+  <label>Typ:</label>
+  <label>
+    <input type="text" th:field="*{instrument.type}"/>
+  </label>
+  <label>Nr seryjny:</label>
+  <label>
+    <input type="text" th:field="*{instrument.serialNo}"/>
+  </label>
+  <button type="submit">Zapisz</button>
+  </form>
+</div>
+
+<!--Fragment footer / stopka-->
+<div th:insert="fragments/fragment :: footer"></div>
+
+</body>
+</html>

@@ -40,29 +40,8 @@
   </table>
   </br>
 </div>
-<div>
-  <h2>Dodaj nowe urządzenie pomairowe</h2>
-    <!--/*@thymesVar id="device" type="pl.ymz.promac.testyprotokoly.controllers.InstrumentController"*/-->
-  <form th:action="@{/instrument}" method="post" th:object="${instrument}"/>
-  <label>Nazwa:</label>
-  <label>
-    <input type="text" th:field="*{instrument.name}"/>
-  </label>
-  <label>Producent:</label>
-  <label>
-    <input type="text" th:field="*{instrument.producer}"/>
-  </label>
-  <label>Typ:</label>
-  <label>
-    <input type="text" th:field="*{instrument.type}"/>
-  </label>
-  <label>Nr seryjny:</label>
-  <label>
-    <input type="text" th:field="*{instrument.serialNo}"/>
-  </label>
-  <button type="submit">Zapisz</button>
-  </form>
-</div>
+
+<h2><a href="/instrument/new">Nowe urządzenie</a> </h2>
 
 <!--Fragment footer / stopka-->
 <div th:insert="fragments/fragment :: footer"></div>

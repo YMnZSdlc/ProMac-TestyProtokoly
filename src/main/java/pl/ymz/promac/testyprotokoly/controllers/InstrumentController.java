@@ -30,13 +30,20 @@ public class InstrumentController {
         return "instrument/main";
     }
 
-    @PostMapping
-    public String addDevice (@ModelAttribute("instrument") Instrument instrument,
+    @GetMapping("/new")
+    public String newInstrument (Model model){
+        model.addAttribute("instrument", new Instrument());
+        return "instrument/create";
+    }
+
+    @PostMapping("/new")
+    public String addInstrument (@ModelAttribute("instrument") Instrument instrument,
                              Model model){
         logger.warn("Próba dodania urządzenia pomiarowego");
         instrumentRepository.save(instrument);
-        model.addAttribute("devices", instrumentRepository.findAll());
-        return "instrument/main";
+        model.addAttribute("message", "Dodano urządzenie pomiarowe");
+        model.addAttribute("instrument", new Instrument());
+        return "instrument/create";
     }
 
 
