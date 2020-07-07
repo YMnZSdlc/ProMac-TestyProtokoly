@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
-  <!-- Static CSS -->
-  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>
+  <!--  CSS -->
+  <!--  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>-->
 
   <title>Urządzenia pomiarowe</title>
 </head>
@@ -17,11 +17,12 @@
 <div th:insert="fragments/fragment :: menu"></div>
 <div th:insert="fragments/fragment :: header"></div>
 
-<div class="container p-2 my-2 border">
+<div>
 
-  <h1>Urządzenia pomiarowe</h1>
+  <h2>Urządzenia pomiarowe</h2>
+  <h4 th:if="${message != null}" th:text="${message}"></h4>
 
-  <table class="table-bordered table-responsive thead-light">
+  <table>
     <tr>
       <th>ID</th>
       <th>Nazwa</th>
@@ -41,7 +42,7 @@
   </br>
 </div>
 
-<h2><a href="/instrument/new">Nowe urządzenie</a> </h2>
+<h4><a href="/instrument/new">Nowe urządzenie</a></h4>
 
 <!--Fragment footer / stopka-->
 <div th:insert="fragments/fragment :: footer"></div>

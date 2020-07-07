@@ -26,24 +26,24 @@ public class InstrumentController {
     public String getDevices (Model model){
         logger.info("Pobranie listy urządzeń pomiarowych");
         model.addAttribute("instruments", instrumentRepository.findAll());
-        model.addAttribute("instrument", new Instrument());
         return "instrument/main";
     }
 
     @GetMapping("/new")
     public String newInstrument (Model model){
+        logger.info("Tworzenie urządzenia pomiarowego. Dodanie do modelu");
         model.addAttribute("instrument", new Instrument());
         return "instrument/create";
     }
 
-    @PostMapping("/new")
+    @PostMapping
     public String addInstrument (@ModelAttribute("instrument") Instrument instrument,
                              Model model){
         logger.warn("Próba dodania urządzenia pomiarowego");
         instrumentRepository.save(instrument);
         model.addAttribute("message", "Dodano urządzenie pomiarowe");
-        model.addAttribute("instrument", new Instrument());
-        return "instrument/create";
+        model.addAttribute("instruments", instrumentRepository.findAll());
+        return "instrument/main";
     }
 
 
