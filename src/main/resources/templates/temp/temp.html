@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: headFragment (pageTitle = 'Temp')">
+</head>
+
+<body>
+
+<!--Fragment menu-->
+<div th:insert="fragments/fragment :: menu"></div>
+<!--Fragment header-->
+<div th:insert="fragments/fragment :: header"></div>
+
+<div>
+  Content
+</div>
+
+<!--Fragment footer-->
+<div th:insert="fragments/fragment :: footer"></div>
+
+</body>
+</html>

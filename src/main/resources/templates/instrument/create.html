@@ -1,20 +1,18 @@
 <!DOCTYPE html>
+
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <!-- Required meta tags -->
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+<head th:replace="fragments/fragment :: headFragment (pageTitle = 'Nowe urządzenie pomiarowe')">
 
   <!--  CSS -->
-  <!--  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>-->
+  <link rel="stylesheet" type="text/css" href="css/ymz.css"/>
 
-  <title>Urządzenia pomiarowe</title>
 </head>
 
 <body>
 
-<!--Fragmenty thymeleaf-->
+<!--Fragment menu-->
 <div th:insert="fragments/fragment :: menu"></div>
+<!--Fragment header-->
 <div th:insert="fragments/fragment :: header"></div>
 
 <div>
@@ -42,11 +40,15 @@
       <input type="text" th:field="*{instrument.serialNo}"/>
     </label>
     <button type="submit">Zapisz</button>
+    <button type="reset">Wyczyść</button>
+    <a th:href="@{/instrument}">
+      <button type="button">Anuluj</button>
+    </a>
     </form>
   </div>
 </div>
 
-<!--Fragment footer / stopka-->
+<!--Fragment footer-->
 <div th:insert="fragments/fragment :: footer"></div>
 
 </body>

@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <!-- Required meta tags -->
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
-  <!--  CSS -->
-  <!--  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>-->
-
-  <title>Urządzenia pomiarowe</title>
+<head th:replace="fragments/fragment :: headFragment (pageTitle = 'Urządzenia pomiarowe')">
 </head>
 
 <body>
 
-<!--Fragmenty thymeleaf-->
+<!--Fragment menu-->
 <div th:insert="fragments/fragment :: menu"></div>
+<!--Fragment header-->
 <div th:insert="fragments/fragment :: header"></div>
 
 <div>
@@ -44,7 +37,7 @@
 
 <h4><a href="/instrument/new">Nowe urządzenie</a></h4>
 
-<!--Fragment footer / stopka-->
+<!--Fragment footer-->
 <div th:insert="fragments/fragment :: footer"></div>
 
 </body>

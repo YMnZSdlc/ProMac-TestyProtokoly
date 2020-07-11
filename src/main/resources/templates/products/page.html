@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <!-- Required meta tags -->
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-
-  <!--  CSS -->
-  <!--  <link rel="stylesheet" type="text/css" href="css/awsm.css"/>-->
-
-  <title>Strona startowa</title>
+<head th:replace="fragments/fragment :: headFragment (pageTitle = 'Produkty')">
 </head>
 
 <body>
 
-<!--Fragmenty thymeleaf-->
+<!--Fragment menu-->
 <div th:insert="fragments/fragment :: menu"></div>
+<!--Fragment header-->
 <div th:insert="fragments/fragment :: header"></div>
 
 <div>
@@ -32,14 +25,15 @@
       <th>Utworzone</th>
     </tr>
 
+    <!--/*@thymesVar id="content" type="pl.ymz.promac.testyprotokoly.domain.Product"*/-->
     <!--/*@thymesVar id="content" type="pl.ymz.promac.testyprotokoly.controllers.ProductController"*/-->
     <tr th:each="product, iStat : ${productPage.content}"
         th:style="${iStat.odd}? 'font-weight: bold;'"
         th:alt-title="${iStat.even}? 'even' : 'odd'">
       <td th:text="${product.id}">ID</td>
       <td th:text="${product.symbol}">Symbol produktu</td>
-      <td th:text="${product.productType}">Typ produktu</td>
-      <td th:text="${product.productSN}">Nr seryjny</td>
+      <td th:text="${product.type}">Typ produktu</td>
+      <td th:text="${product.serialNo}">Nr seryjny</td>
       <td th:text="${product.worker.login}">Testował</td>
       <td th:text="${product.testDate}">Data testu</td>
       <td th:text="${product.audit.created}"></td>
@@ -56,7 +50,7 @@
      th:class="${pageNumber==productPage.number + 1} ? active"></a>
 </div>
 
-<!--Fragment footer / stopka-->
+<!--Fragment footer-->
 <div th:insert="fragments/fragment :: footer"></div>
 
 </body>
