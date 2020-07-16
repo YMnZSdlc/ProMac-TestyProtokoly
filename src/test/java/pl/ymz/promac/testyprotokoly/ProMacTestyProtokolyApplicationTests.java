@@ -9,5 +9,4 @@ public class ProMacTestyProtokolyApplicationTests {
     @Test
     public void contextLoads() {
     }
-
 }
