@@ -36,6 +36,13 @@ public class InstrumentController {
         return "instrument/create";
     }
 
+//    @GetMapping("/edit")
+//    public String editInstrument (Model model){
+//        logger.info("Edycja urządzenia pomiarowego");
+//        model.addAttribute("instrument", instrumentRepository.existsById());
+//        return "instrument/create";
+//    }
+
     @PostMapping
     public String addInstrument (@ModelAttribute("instrument") Instrument instrument,
                              Model model){
